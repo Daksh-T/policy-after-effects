@@ -105,10 +105,10 @@ class PolicyApp(App):
 
     def sync_get_effects(self, text, order):
         try:
-            prompt = f"List the {order}-order effects of the following policy:\n\n{text}"
+            prompt = f"List the {order}-order effects of the following policy, without outputting any other text (only the effects, numbered):\n\n{text}"
             chat_completion = client.chat.completions.create(
                 messages=[{"role": "user", "content": prompt}],
-                model="llama3-8b-8192",
+                model="llama-3.1-70b-versatile",
             )
             response = chat_completion.choices[0].message.content
             return self.parse_effects(response)
