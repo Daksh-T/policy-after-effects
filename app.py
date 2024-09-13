@@ -12,7 +12,7 @@ from groq import Groq
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 executor = ThreadPoolExecutor()
 
-class PolicyApp(App):
+class PolicyAfterEffects(App):
     def __init__(self, policy_file=None, **kwargs):
         super().__init__(**kwargs)
         self.policy_file = policy_file
@@ -202,5 +202,5 @@ if __name__ == "__main__":
     parser.add_argument('--file', type=str, help='Path to policy text file')
     args = parser.parse_args()
 
-    app = PolicyApp(policy_file=args.file)
+    app = PolicyAfterEffects(policy_file=args.file)
     app.run()
